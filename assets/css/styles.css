@@ -1,0 +1,33 @@
+@font-face {
+    font-family: "BrunoAce-Regular";
+    src: url(../font/BrunoAce-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Bruno Ace";
+    src: url(../font/Bruno\ Ace\ 400.ttf);
+}
+
+main {
+    width: 100%;
+    background-color: #000113;
+    overflow: hidden;
+}
+
+.hero-section {
+    background-color: #000113;
+    padding: 20px;
+    font-family: "BrunoAce-Regular";
+}
+
+.bg-img {
+    background-image: url(../images/2151672059\ 1\ \(1\).png);
+    background-size: cover;
+    background-position: center;
+}
+
+.ai-gen,
+.transforming-text {
+    font-family: "BrunoAce-Regular";
+
+}
