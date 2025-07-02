@@ -8,6 +8,28 @@
     src: url(../font/Bruno\ Ace\ 400.ttf);
 }
 
+
+.cursor,
+.splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+.cursor {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgb(117, 111, 111);
+    z-index: 1000;
+}
+
+
+
+
 main {
     width: 100%;
     background-color: #000113;
@@ -40,7 +62,8 @@ main {
 }
 
 .ai-gen,
-.transforming-text {
+.transforming-text,
+.media-text {
     font-family: "BrunoAce-Regular";
 
 }

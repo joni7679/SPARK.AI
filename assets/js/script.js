@@ -36,6 +36,32 @@ function loco() {
 }
 
 loco();
+
+
+
+// custom cursor code here
+function customCursor() {
+    const cursor = document.querySelector(".cursor");
+    const main = document.querySelector("main")
+    main.addEventListener("mousemove", e => {
+        gsap.to(cursor,
+            {
+                x: e.clientX,
+                y: e.clientY,
+                duration: 0.1,
+                ease: "power2.out"
+            });
+    });
+
+}
+customCursor()
+
+
+
+
+
+
+
 // navbar animation
 function navbarAnimation() {
     let main = document.querySelector("main");
@@ -203,10 +229,6 @@ gallerySectionAnimation();
 //  Text to Video Section start here  
 function textToVideoSectionAnimation() {
     let tl = gsap.timeline({
-        defaults: {
-            duration: 0.5,
-            ease: "power1.out"
-        },
         scrollTrigger: {
             trigger: ".text-to-video-section",
             scroller: "main",
@@ -217,14 +239,22 @@ function textToVideoSectionAnimation() {
         }
     });
     tl.from(".left-part", {
-        x: -200,
-        // rotate: 70,
+        scale: 0.7,
         opacity: 0.7,
     }, "text-to-video")
     tl.from(".generate", {
         y: 200,
         opacity: 0,
     }, "text-to-video")
+    const split = new SplitText(".convert-text", { type: "chars, words" });
+
+    tl.from(split.chars, {
+        y: 100,
+        opacity: 0,
+        stagger: 0.05,
+        ease: "back.out(1.7)",
+        duration: 0.4
+    }, "text-to-video");
 }
 textToVideoSectionAnimation()
 
@@ -233,24 +263,33 @@ function whyOurAIGeneratorStandsOutSectionAnimation() {
     let tl = gsap.timeline({
         defaults: {
             duration: 0.6,
-            ease: "power2.out",
+            ease: "power1.out",
         },
         scrollTrigger: {
             trigger: ".why-our-ai-generator-stands-out-section",
             scroller: "main",
-            start: "top 80%",
+            start: "top 60%",
             end: "bottom 30%",
-            scrub: 2,
+            scrub: 3,
             markers: true,
+            // pin: true
         },
     });
 
-    tl.from(".ccard", {
+    // tl.from(".card", {
+    //     y: 100,
+    //     opacity: 0.4,
+    //     stagger: 0.9,
+    // }, "aigen");
+    const split = new SplitText(".ai-gen", { type: "chars, words" });
+
+    tl.from(split.chars, {
         y: 100,
-        scale: 0.5,
-        opacity: 0.4,
-        stagger: 0.1,
-    });
+        opacity: 0,
+        stagger: 0.05,
+        ease: "back.out(1.7)",
+        duration: 0.4
+    }, "aigen");
 }
 whyOurAIGeneratorStandsOutSectionAnimation();
 
