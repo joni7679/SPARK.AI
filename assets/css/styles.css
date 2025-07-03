@@ -67,3 +67,18 @@ main {
     font-family: "BrunoAce-Regular";
 
 }
+
+#menuToggle {
+    display: none;
+}
+
+/* media query code here......... */
+@media (max-width: 1017px) {
+    .sign-btn {
+        display: none;
+    }
+
+    #menuToggle {
+        display: block !important;
+    }
+}

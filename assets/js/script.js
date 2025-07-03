@@ -293,3 +293,128 @@ function whyOurAIGeneratorStandsOutSectionAnimation() {
 }
 whyOurAIGeneratorStandsOutSectionAnimation();
 
+// Boost Your Social Media Post section
+function boostYourSocialMediaPostSectionAnimation() {
+    let tl = gsap.timeline({
+        defaults: {
+            duration: 0.6,
+            ease: "power1.out",
+        },
+        scrollTrigger: {
+            trigger: ".boost-your-social-media-post-section",
+            scroller: "main",
+            start: "top 60%",
+            end: "bottom 30%",
+            scrub: 3,
+            markers: true,
+
+        }
+    })
+    tl.from(".media", {
+        y: 100,
+        opacity: 0.6,
+
+    }, "boost")
+    tl.from(".boost-text", {
+        scale: 0.5,
+        opacity: 0.7,
+    }, "boost+=0.2");
+
+    let clutter = '';
+    document.querySelector(".boost-para").textContent.split("").forEach(element => {
+        clutter += `<span>${element}</span>`;
+    });
+    document.querySelector(".boost-para").innerHTML = clutter;
+
+    tl.to(".boost-para span", {
+        stagger: .2,
+        color: `#fff`
+    });
+
+
+}
+boostYourSocialMediaPostSectionAnimation()
+// responsivenabar animation
+function responsiveNavbarAnimation() {
+    let tl = gsap.timeline();
+
+    let responsivenav = document.querySelector(".mobileMenu");
+
+
+    gsap.set(responsivenav, {
+        scaleY: 0,
+        transformOrigin: "top",
+        visibility: "visible"
+    });
+
+
+    tl.to(responsivenav, {
+        duration: 0.8,
+        scaleY: 1,
+        ease: "expo.out"
+    }, "nav");
+
+
+    tl.from(".sm-nav-links", {
+        opacity: 0,
+        y: 40,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: "power3.out"
+    }, "nav+=0.5");
+}
+
+// responsiveNavbarAnimation();
+
+const menuToggle = document.querySelector("#menuToggle");
+const menu = document.querySelector(".mobileMenu");
+
+let menuOpen = false;
+
+gsap.set(menu, {
+    xPercent: 200,
+    scaleY: 0,
+    transformOrigin: "top",
+    visibility: "visible"
+});
+
+
+menuToggle.addEventListener("click", () => {
+    let tl = gsap.timeline();
+
+    if (!menuOpen) {
+
+        tl.to(menu, {
+            xPercent: 0,
+            duration: 0.8,
+            ease: "expo.out"
+        }, "open")
+            .to(menu, {
+                scaleY: 1,
+                duration: 0.6,
+                ease: "expo.out"
+            }, "open+=0.2")
+            .from(".sm-nav-links", {
+                opacity: 0,
+                y: 40,
+                stagger: 0.1,
+                duration: 0.6,
+                ease: "power3.out"
+            }, "open+=0.5");
+
+        menuOpen = true;
+    } else {
+        tl.to(menu, {
+            xPercent: 200,
+            duration: 0.8,
+            ease: "expo.inOut"
+        });
+        tl.to(menu, {
+            scaleY: 0,
+            duration: 0.6,
+            ease: "expo.out"
+        })
+        menuOpen = false;
+    }
+});
+
